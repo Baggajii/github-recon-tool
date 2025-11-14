@@ -1,60 +1,56 @@
-# GitHub Recon Automation Script
+# GitHub Recon Automation Tool
 
-This project is a simple Python tool that scans public GitHub repositories for sensitive information related to a given keyword or domain name. It uses the GitHub Code Search API to identify files that may contain secrets, configuration data, or exposed credentials.
+This project is a Python-based tool that scans public GitHub repositories for exposed sensitive information related to a given keyword or domain name. It uses the GitHub Code Search API to identify files where the keyword appears, such as configuration files, environment files, or code snippets.
 
-The script was created as part of a cybersecurity training assignment and focuses on automation, OSINT, and secure coding practices.
+The tool is designed for learning and cybersecurity training, focusing on OSINT and automation.
 
 ---
 
 ## Features
 
-- Search for sensitive code exposures across public GitHub repositories
-- Detect matches inside files (.env, .config, .json, .yml, .py, etc.)
-- Extract:
-  - Repository name
-  - File path
-  - File type
-  - Direct GitHub file URL
-  - Snippet of the matched line
-  - Timestamp of scan
-- Mask sensitive values in the output
-- Save results in a structured `results.json` file
-- Handles rate limits and API errors
-- Beginner-friendly and modular script design
+- Searches across public GitHub repositories using the Code Search API  
+- Detects appearances inside:
+  - `.env`
+  - `.json`
+  - `.yml`
+  - `.config`
+  - `.py`
+  - and other text-based files  
+- Extracts key details:
+  - Repository name  
+  - File path  
+  - File extension  
+  - Direct GitHub file URL  
+  - Snippet of the matched line  
+  - Timestamp of the scan  
+- Saves results in a structured `results.json` file  
+- Masks potentially sensitive values  
+- Includes basic error and rate-limit handling  
+- Beginner-friendly and easy to extend  
 
 ---
 
-## Requirements
+## Installation
 
-Install dependencies using:
+Install the required Python modules:
 
-pip install -r requirements.txt
 
-markdown
-Copy code
-
-Dependencies include:
-- `requests`
-- `json`
-- `argparse`
-- `datetime`
+---
 
 ## How to Run
 
-1. Clone or download the project.
-2. Open a terminal in the project folder.
-3. Run the script:
+Run the script:
 
-python main.py
 
-yaml
-Copy code
+Provide the following when asked:
 
-4. Enter the following when prompted:
-   - Target keyword (example: `cashify`, `linkedin`, `example.com`)
-   - GitHub Personal Access Token (PAT)
+1. **Target keyword or domain name**  
+   Example: `cashify`, `example.com`, `linkedin`, etc.
 
-The script will generate a `results.json` file with all findings.
+2. **GitHub Personal Access Token (PAT)**  
+   A classic token with `code:read` permission works.
+
+Once completed, the script generates a `results.json` file containing all findings.
 
 ---
 
@@ -68,22 +64,12 @@ The script will generate a `results.json` file with all findings.
     "file_type": ".env",
     "html_url": "https://github.com/acme/example-repo/blob/main/config/.env",
     "match_snippet": "API_KEY=********abcd",
-    "searched_keyword": "cashify.in",
+    "searched_keyword": "example.com",
     "timestamp": "2025-05-22T18:00:00Z"
   }
 ]
-Notes
-Always use a valid GitHub Personal Access Token.
-
-This tool is for educational OSINT and security research purposes.
-
-Do not misuse the script or target unauthorized systems.
-
 Author
+
 Ramandeep Bagga
-Cybersecurity Student 
-
-
-
-
+Cybersecurity Enthusiast
 
